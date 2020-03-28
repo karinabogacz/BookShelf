@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title%} Home {% endblock %} 
+
+{% block body%}
+
+<nav class="navbar navbar-light bg-light navbar-expand-md">
+    <a class="navbar-brand" href="#">
+      <img src="https://img.icons8.com/cotton/64/000000/book.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="brand image">
+      <!-- <a href="https://icons8.com/icon/95142/book">Book icon by Icons8</a> -->
+      All-books
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-between">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mx-3">
+          <a class="nav-link" href="#">Home </a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" href="#">log in</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" href="#">sign up</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+<article>
+
+  <h1 class="display-3"> Lorem Ipsum Dolor </h1>
+  <h2 class="h3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, recusandae.</h2>
+
+  <a href="{{url_for('sign_up')}}">
+    <button type="button" class="btn btn-light btn-lg px-4">Join us!</button>
+  </a>
+
+</article>
+
+{% endblock %}

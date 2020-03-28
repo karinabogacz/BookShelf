@@ -1,0 +1,24 @@
+body{
+    background-image: url("bcg3.jpg");
+    background-repeat:no-repeat;
+    background-size: 100%;
+}
+
+article{
+    text-align: center;
+}
+
+.display-3{
+    color: cornsilk;
+    margin-top: 50px;
+}
+
+.h3{
+    margin-top: 50px;
+    margin-bottom: 60px;
+    color: cornsilk;
+    font-weight: 100;
+}
+
+
+
