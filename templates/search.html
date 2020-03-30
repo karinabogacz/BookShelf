@@ -1,0 +1,9 @@
+{% extends 'layout_home.html' %}
+
+{%block content%}
+<h1>books {{user}}</h1>
+<form action="{{url_for('logout')}}">
+    <button>logout</button>
+</form>
+{%endblock%}
+

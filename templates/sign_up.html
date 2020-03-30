@@ -1,47 +1,42 @@
-{% extends 'layout.html' %}
+{% extends 'layout_enter.html' %}
 
 {% block title%} Sign up {% endblock %} 
 
-{% block body%} 
-
-<nav>
-    <nav class="navbar navbar-light bg-light navbar-expand-md">
-        <a class="navbar-brand" href="#">
-          <img src="https://img.icons8.com/cotton/64/000000/book.png" width="30" height="30" class="d-inline-block align-top mx-2" alt="brand image">
-          <!-- <a href="https://icons8.com/icon/95142/book">Book icon by Icons8</a> -->
-          All-books
-        </a>
-    
-        <div class="collapse navbar-collapse justify-content-between">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">Home </a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">log in</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="#">sign up</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
-    
-</nav>
+{% block content%} 
 
 <main>
-
-<form action="{{url_for('sign_up')}}" method="post">
-
-    <input type="text" name="username" placeholder="Your username">
-    <input type="text" name="email" placeholder="Your email">
-    <input type="password" name="password" placeholder="Yours password">
-
-    <button>submit</button>
-
-</form>
-
-
-</main>
+  <section>
+    <div class="container text-center mt-4">
+      <div class="row">
+        <div class="col-md-6 login-form">
+            <h3 class="h3 mb-5 h3-sign_up">Join our community! </h3>
+            <form action="{{url_for('sign_up')}}" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" placeholder="email" >
+              </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Sign up" />
+                </div>
+                <div class="form-group">
+                  <p class="float-left mt-3 mr-2">Already have an account?
+                  <a href="{{url_for('login')}}">Login</a>
+                </p>
+              </div>
+              </form>
+          </div>
+        <div class="col-md-6 sign_up-text">
+          <h1 class="display-3 mb-5 h1-sign_up">Why join us?</h1>
+          <h2 class="display-5 mx-3 h2-sign_up"><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur dignissimos a voluptate libero, culpa sequi dolore voluptas aliquam eaque inventore?</span> </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+</main> 
 
 {% endblock %} 

@@ -1,24 +1,129 @@
-body{
+.layout_home{
     background-image: url("bcg3.jpg");
     background-repeat:no-repeat;
     background-size: 100%;
+}
+
+.layout_enter{
+    background-color: #f2f5f7;
 }
 
 article{
     text-align: center;
 }
 
-.display-3{
+.display-3-home{
     color: cornsilk;
     margin-top: 50px;
 }
 
-.h3{
+.h3-home{
     margin-top: 50px;
     margin-bottom: 60px;
     color: cornsilk;
     font-weight: 100;
 }
 
+.button-home{
+    background-color: cornsilk;
+    color: #50927c;
+    font-weight: 500;
+    font-size: 25px;
+    border: none;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.8), 0 14px 28px 0 rgba(0, 0, 0, 0.30);
+    
+}
+
+.button-home:hover{
+    background-color: #50927c;
+    color: cornsilk;
+}
+
+.login-form{
+    padding: 2% 4% 0 4%;
+    background-color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 18px;
+}
+.login-form h3{
+    text-align: center;
+    color: cornsilk;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 18px;
+    background-color: #50927c ;
+}
+
+.h3-sign_up{
+    color: #494a4a !important;
+    font-weight: 200;
+}
+
+.h1-sign_up{
+    color: #f2f5f7;
+}
+
+.h2-sign_up{
+    color: #494a4a;
+    font-weight: 200;
+}
 
 
+.h2-sign_up span {
+    background-color: #f2f5f7;
+    padding-bottom: 22px;
+}
+
+@media(max-width: 767px){
+    .sign_up-text{
+        display: none;
+    }
+    .login-form{
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 85%;
+        padding: 2% 6% 0 6%;
+    }
+    hr{
+        margin-top: 70px !important;
+    }
+}
+
+hr {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 20%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, cornsilk, #494a4a, cornsilk);
+}
+
+main{
+    background-color: #50927c;
+    padding-top: 5px;
+    padding-bottom: 25px;
+}
+
+footer p{
+    color: #7c7c7d;
+}
+
+.footer-home{
+    margin-top: 100px !important;
+}
+
+.footer-home p{
+    color: white;
+}
+.footer-home hr{
+    background-image: linear-gradient(to right, #494a4a, #747171, #494a4a);
+
+}

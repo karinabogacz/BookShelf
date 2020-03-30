@@ -1,0 +1,35 @@
+{% extends 'layout_enter.html' %}
+
+{% block title%} login {% endblock %} 
+
+{% block content%} 
+
+<main>
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-6 login-form">
+          <h3 class="h4 mb-4">Welcome back!</h3>
+          <form action="{{url_for('login')}}" method="post">
+              <div class="form-group">
+                  <input type="text" class="form-control" name="username" placeholder="Your username">
+              </div>
+              <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Your Password">
+              </div>
+              <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="Login" />
+              </div>
+              <div class="form-group">
+                <p class="float-left mt-3 mr-2">First time?
+                <a href="{{url_for('sign_up')}}">Sign up</a>
+              </p>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</main>
+
+{% endblock %} 
