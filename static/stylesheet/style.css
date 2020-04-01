@@ -39,31 +39,41 @@ article{
     color: cornsilk;
 }
 
+
+.main-login{
+    background-color: #50927c;
+    margin-top: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .login-form{
-    padding: 2% 4% 0 4%;
+    padding: 4% 3% 0 3%;
     background-color: white;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     border-radius: 18px;
 }
 .login-form h3{
     text-align: center;
-    color: cornsilk;
+    font-weight: 400;
+    color: #494a4a;
 }
-
+  
 .btnSubmit
 {
-    width: 50%;
-    border-radius: 1rem;
-    padding: 1.5%;
+    width: 80%;
+    border-radius: 2rem;
+    padding: 2.5%;
     border: none;
     cursor: pointer;
-    font-weight: 600;
-    margin-top: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
     background-color: #50927c ;
 }
 
-.h3-sign_up{
-    color: #494a4a !important;
+.h3-logo{
+    color: #494a4a;
     font-weight: 200;
 }
 
@@ -72,14 +82,9 @@ article{
 }
 
 .h2-sign_up{
-    color: #494a4a;
+    color: #f2f5f7;
     font-weight: 200;
-}
-
-
-.h2-sign_up span {
-    background-color: #f2f5f7;
-    padding-bottom: 22px;
+    letter-spacing: 2px;
 }
 
 @media(max-width: 767px){
@@ -89,11 +94,24 @@ article{
     .login-form{
         margin-right: auto;
         margin-left: auto;
-        max-width: 85%;
-        padding: 2% 6% 0 6%;
+        max-width: 80%;
+        padding: 4% 6% 2% 6%;
+    }
+    .login-form h3{
+       margin-top: 20px;
+       margin-bottom: 50px !important;
     }
     hr{
         margin-top: 70px !important;
+    }
+}
+
+@media(max-width: 991px){
+    .h1-sign_up{
+        font-size: 50px !important;
+    }
+    .h2-sign_up{
+        font-size: 25px !important;
     }
 }
 
@@ -106,24 +124,22 @@ hr {
     background-image: linear-gradient(to right, cornsilk, #494a4a, cornsilk);
 }
 
-main{
-    background-color: #50927c;
-    padding-top: 5px;
-    padding-bottom: 25px;
-}
-
 footer p{
     color: #7c7c7d;
 }
 
-.footer-home{
-    margin-top: 100px !important;
+.form-control-borderless {
+    border: none;
 }
 
-.footer-home p{
-    color: white;
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
-.footer-home hr{
-    background-image: linear-gradient(to right, #494a4a, #747171, #494a4a);
 
+.btn-search{
+    background-color: #50927c;
+    color: cornsilk;
+    font-weight: 350;
 }

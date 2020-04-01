@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/style.css') }}"/>
+    
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -16,7 +17,7 @@
 
     <header>
         <a href="{{url_for('index')}}" style="text-decoration: none;">
-        <h3 class="text-center my-3 h3-sign_up">All-books
+        <h3 class="text-center my-3 h3-logo">All-books
           <img src="https://img.icons8.com/flat_round/64/000000/bookmark-book.png" width="40" height="40" class="d-inline-block mx-2"  alt="logo">
         </h3>
       </a>

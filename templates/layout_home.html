@@ -9,13 +9,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet/style.css') }}"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body class="layout_home">
     
 <nav class="navbar navbar-light bg-light navbar-expand-md">
-    <a class="navbar-brand" href="{{url_for('index')}}">
+
+    {%if session["user"]%}
+      <a class="navbar-brand" href="{{url_for('search')}}">
+    {%else%}
+      <a class="navbar-brand" href="{{url_for('index')}}">
+    {%endif%}
+
       <img src="https://img.icons8.com/flat_round/64/000000/bookmark-book.png" width="35" height="35" class="d-inline-block align-top mx-2" alt="brand image">
       <!-- <a href="https://icons8.com/icon/95142/book">Book icon by Icons8</a> -->
       All-books
@@ -23,26 +32,38 @@
 
     <div class="collapse navbar-collapse justify-content-between">
       <ul class="navbar-nav ml-auto">
+
         <li class="nav-item mx-3">
-          <a class="nav-link" href="{{url_for('index')}}">Home </a>
+          {%if session["user"]%}
+            <a class="nav-link" href="{{url_for('search')}}">Home </a>
+          {%else%}
+            <a class="nav-link" href="{{url_for('index')}}">Home </a>
+          {%endif%}
         </li>
+
         <li class="nav-item mx-3" style="background-color: #50927c; border-radius: 18px; padding: 3px">
-          <a class="nav-link" href="{{url_for('sign_up')}}" style="color: cornsilk;">sign up</a>
+          {%if session["user"]%}
+            <a class="nav-link" href="{{url_for('logout')}}" style="color: cornsilk;">Logout</a>
+          {%else%}
+            <a class="nav-link" href="{{url_for('sign_up')}}" style="color: cornsilk;">sign up</a>
+          {%endif%}
         </li>
+
         <li class="nav-item mx-3">
           <a class="nav-link" href="{{url_for('login')}}">login</a>
         </li>
+
       </ul>
     </div>
 </nav>
 
     {% block content %}{% endblock %}
   
-<footer class="footer-home">
+<!-- <footer class="footer-home">
   <footer class="text-center">
     <hr>
     <p class="mt-3 mb-2">Copyright 2020 &copy; All-books</p>
-</footer>
+</footer> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
