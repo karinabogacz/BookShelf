@@ -64,15 +64,22 @@ def login():
 def search():
 
     if "user" in session:
-        # books = db.execute ("SELECT * FROM books LIMIT 100").fetchall()
-        # return render_template("search.html", user=session["user"], books = books)
 
         if request.method == "POST":
             search_input = request.form.get("search")
-            search_results = db.execute("SELECT title FROM books WHERE year = :year", {"year": search_input}).fetchall()
-            return render_template ("search_results.html", books = search_results)
-        
-        return render_template ("search.html")
+            query = "%" + search_input + "%"
+            search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query", {"query": query})
+            row_count = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query", {"query": query}).rowcount
+
+            if row_count == 0:
+                return render_template ("search_results.html", message = "No results found :(")
+
+            else:
+                return render_template ("search_results.html", search_results = search_results, row_count = row_count)
+
+        else:
+            books = db.execute ("SELECT * FROM books LIMIT 100").fetchall()
+            return render_template("search.html", user=session["user"], books = books)
     else:
         return redirect(url_for("login"))
 
