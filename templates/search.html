@@ -3,42 +3,41 @@
 {%block content%}
  
 <main>
-<div class="container" style="background-color: white">
-	<div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-6">
-       <form class="card card-sm form-search mt-4">
-          <div class="card-body row no-gutters align-items-center">
-            <div class="col-auto">
-              <i class="fas fa-search h5 text-body"></i>
+  <div class="container" style="background-color: white">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-6">
+
+        <form class="card card-sm form-search mt-4" action="{{url_for('search')}}" method="post">
+            <div class="card-body row no-gutters align-items-center">
+              <div class="col-auto">
+
+                <i class="fas fa-search h5 text-body"></i>
+              </div>
+              <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" name="search" placeholder="Search books or keywords">
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-lg btn-search" type="submit">Search</button>
+              </div>
+
             </div>
-            <div class="col">
-              <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords">
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-lg btn-search" type="submit">Search</button>
-            </div>
-          </div>
-        </form>
-    </div>
+          </form>
+
+      </div>
   </div>
 
-  <div class="row">
+ <!-- <div class="row">
     <div class="col-12 col-md-10 col-lg-8">
-      <ul>
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-        <li>d</li>
-        <li>e</li>
-        <li>f</li>
-        <li>g</li>
-        <li>h</li>
-      </ul>
-
+        <ul>
+          {% for book in books %}
+          <li>
+            <a href="{{url_for('book')}}"> {{book.title}} {{book.author}} {{book.year}} {{book.isbn}}</a>
+          </li>
+          {% endfor %}
+        </ul>
     </div>
+  </div> -->
 
-  </div>
-</div>
 </main>
 
 {%endblock%}

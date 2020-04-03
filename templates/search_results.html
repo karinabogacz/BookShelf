@@ -1,0 +1,21 @@
+{% extends 'layout_home.html' %}
+
+{%block content%}
+ 
+<main>
+    <div class="row">
+      <div class="col-12 col-md-10 col-lg-8">
+            <ul>
+              {% for book in books %}
+              <li>
+                <a href="{{url_for('book')}}"> {{book.title}} </a>
+              </li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+</main>
+
+{%endblock%}
+

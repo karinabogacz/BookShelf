@@ -60,12 +60,25 @@ def login():
 
     return render_template("login.html")
 
-@app.route("/search")
+@app.route("/search", methods = ['GET', 'POST'])
 def search():
+
     if "user" in session:
-        return render_template("search.html", user=session["user"] ) 
+        # books = db.execute ("SELECT * FROM books LIMIT 100").fetchall()
+        # return render_template("search.html", user=session["user"], books = books)
+
+        if request.method == "POST":
+            search_input = request.form.get("search")
+            search_results = db.execute("SELECT title FROM books WHERE year = :year", {"year": search_input}).fetchall()
+            return render_template ("search_results.html", books = search_results)
+        
+        return render_template ("search.html")
     else:
         return redirect(url_for("login"))
+
+@app.route ("/book")
+def book():
+    return ("book")
 
 @app.route ("/logout")
 def logout():

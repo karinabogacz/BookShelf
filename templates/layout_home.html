@@ -27,7 +27,7 @@
 
       <img src="https://img.icons8.com/flat_round/64/000000/bookmark-book.png" width="35" height="35" class="d-inline-block align-top mx-2" alt="brand image">
       <!-- <a href="https://icons8.com/icon/95142/book">Book icon by Icons8</a> -->
-      All-books
+      BookShelf
     </a>
 
     <div class="collapse navbar-collapse justify-content-between">
@@ -43,15 +43,21 @@
 
         <li class="nav-item mx-3" style="background-color: #50927c; border-radius: 18px; padding: 3px">
           {%if session["user"]%}
-            <a class="nav-link" href="{{url_for('logout')}}" style="color: cornsilk;">Logout</a>
+            <a class="nav-link" href="{{url_for('logout')}}" style="color: cornsilk;">Log out</a>
           {%else%}
             <a class="nav-link" href="{{url_for('sign_up')}}" style="color: cornsilk;">sign up</a>
           {%endif%}
         </li>
 
-        <li class="nav-item mx-3">
-          <a class="nav-link" href="{{url_for('login')}}">login</a>
-        </li>
+          {% if session["user"] %}
+            <li class="nav-item mx-3 mt-2">
+              <h5 style="font-weight: 400">Hello, {{ session["user"] }}</h5>
+            </li>
+          {% else %}
+            <li class="nav-item mx-3">
+              <a class="nav-link" href="{{url_for('login')}}">login</a>
+            </li>
+          {%endif%}
 
       </ul>
     </div>

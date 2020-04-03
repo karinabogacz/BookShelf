@@ -1,7 +1,14 @@
-.layout_home{
+.layout_home::before{
+    position: fixed;
     background-image: url("bcg3.jpg");
-    background-repeat:no-repeat;
-    background-size: 100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+    background-position: bottom;
+    background-size: cover;
+    content: "";
+
 }
 
 .layout_enter{
