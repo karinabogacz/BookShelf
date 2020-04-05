@@ -31,8 +31,8 @@
           <ul class="list-group list-group-flush">
             {% for book in books %}
             <li class="list-group-item">
-              <a href="{{url_for('book')}}"> {{book.title}}</a>
-              <p>{{book.author}} {{book.year}}</p>
+              <a href="/book/{{book.isbn}}"> {{book.title}}</a>
+              <p>{{book.author}}, {{book.year}}</p>
               <p class="float-right">{{book.isbn}}</p>
             </li>
             {% endfor %}

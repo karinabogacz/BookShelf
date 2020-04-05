@@ -1,4 +1,5 @@
 import os
+import string
 
 from flask import Flask, session, render_template, request, redirect, url_for
 from flask_session import Session
@@ -68,8 +69,14 @@ def search():
         if request.method == "POST":
             search_input = request.form.get("search")
             query = "%" + search_input + "%"
-            search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query", {"query": query})
-            row_count = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query", {"query": query}).rowcount
+
+            search_input_capitalize = string.capwords(search_input)
+            query_capitalize = "%" + search_input_capitalize + "%"
+
+            search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query OR title LIKE :query_capitalize OR author LIKE :query_capitalize",
+            {"query": query, "query_capitalize": query_capitalize})
+            
+            row_count = search_results.rowcount
 
             if row_count == 0:
                 return render_template ("search_results.html", message = "No results found :(")
@@ -78,14 +85,15 @@ def search():
                 return render_template ("search_results.html", search_results = search_results, row_count = row_count)
 
         else:
-            books = db.execute ("SELECT * FROM books LIMIT 100").fetchall()
+            books = db.execute ("SELECT * FROM books LIMIT 50").fetchall()
             return render_template("search.html", user=session["user"], books = books)
     else:
         return redirect(url_for("login"))
 
-@app.route ("/book")
-def book():
-    return ("book")
+@app.route ("/book/<string:isbn>")
+def book(isbn):
+    book_info = db.execute ("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
+    return render_template ("book.html", book_info = book_info)
 
 @app.route ("/logout")
 def logout():

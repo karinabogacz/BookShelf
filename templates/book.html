@@ -1,0 +1,34 @@
+{% extends 'layout_home.html' %}
+
+{% block title%} BookShelf {% endblock %} 
+
+{% block content%}
+
+<main>
+    <div class="container" style="background-color: white; min-height: 800px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <section>
+                    <header>
+                        <h1 class="display-4 m-5 text-center">{{book_info.title}}</h1>
+                        <hr style="width: 100%">
+                    </header>
+                    <ul class="list-group list-group-flush my-5 list-group-book-info">
+                        <li class="list-group-item">Author: {{book_info.author}}</li>
+                        <li class="list-group-item">Publishing year: {{book_info.year}}</li>
+                        <li class="list-group-item">ISBN number: {{book_info.isbn}}</li>
+                    </ul>
+                </section>
+                <section>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1" style="font-size: 18px;" >Leave a review</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button type="button" class="btn btn-primary btn-lg float-right mt-4 button-review">Submit your review</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -150,3 +150,20 @@ footer p{
     color: cornsilk;
     font-weight: 350;
 }
+
+.list-group-book-info li{
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.button-review{
+    background-color: #50927c;
+    border: none;
+    border-radius: 1rem;
+    padding: 10px 20px 10px 20px;
+    font-weight: 320;
+}
+
+.button-home:hover, .button-review:hover{
+    background-color: #66ac94
+}
