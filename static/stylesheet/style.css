@@ -165,5 +165,49 @@ footer p{
 }
 
 .button-home:hover, .button-review:hover{
-    background-color: #66ac94
+    background-color: #427e6a
+} 
+
+.rate {
+    display: block;
+    float: left;
+    height: 40px;
+    margin-bottom: 20px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    display: none;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.heading-review {
+    display: block;
+    font-size: 22px;
+    font-weight: 500; 
+    margin-bottom: 25px;
 }

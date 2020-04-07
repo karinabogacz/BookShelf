@@ -36,7 +36,7 @@
           <ul class="list-group list-group-flush">
             {% for book in search_results %}
             <li class="list-group-item">
-              <a href="/book/{{book['isbn']}}"> {{book.title}}</a>
+              <a href="/book/{{book.isbn}}"> {{book.title}}</a>
               <p>{{book.author}}, {{book.year}}</p>
               <p class="float-right">{{book.isbn}}</p>
             </li>

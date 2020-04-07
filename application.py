@@ -1,5 +1,4 @@
 import os
-import string
 
 from flask import Flask, session, render_template, request, redirect, url_for
 from flask_session import Session
@@ -70,11 +69,11 @@ def search():
             search_input = request.form.get("search")
             query = "%" + search_input + "%"
 
-            search_input_capitalize = string.capwords(search_input)
-            query_capitalize = "%" + search_input_capitalize + "%"
+            search_input_lower = search_input.lower()
+            query_lower = "%" + search_input_lower + "%"
 
-            search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title LIKE :query OR author LIKE :query OR title LIKE :query_capitalize OR author LIKE :query_capitalize",
-            {"query": query, "query_capitalize": query_capitalize})
+            search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title = :search_input OR LOWER(title) LIKE :query_lower OR LOWER(author) LIKE :query_lower",
+            {"query": query, "search_input": search_input, "query_lower": query_lower})
             
             row_count = search_results.rowcount
 
@@ -90,10 +89,31 @@ def search():
     else:
         return redirect(url_for("login"))
 
-@app.route ("/book/<string:isbn>")
+@app.route ("/book/<string:isbn>", methods = ['GET', 'POST'])
 def book(isbn):
-    book_info = db.execute ("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
-    return render_template ("book.html", book_info = book_info)
+
+    if "user" in session:
+
+        book_info = db.execute ("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
+
+        if request.method == "POST":
+
+            review_content = request.form.get("review")
+
+            try:
+
+                db.execute("INSERT INTO reviews (content) VALUES (:content)", {"content": review_content})
+                db.commit()
+                return render_template ("book.html", book_info = book_info, message = "Your review has been posted")
+
+            except:
+
+                return render_template ("book.html", book_info = book_info, message_error = "There was a problem in posting your review")
+
+        return render_template ("book.html", book_info = book_info)
+    
+    return redirect(url_for('login'))
+
 
 @app.route ("/logout")
 def logout():
