@@ -84,7 +84,7 @@ def search():
                 return render_template ("search_results.html", search_results = search_results, row_count = row_count)
 
         else:
-            books = db.execute ("SELECT * FROM books LIMIT 50").fetchall()
+            books = db.execute ("SELECT * FROM books LIMIT 4").fetchall()
             return render_template("search.html", user=session["user"], books = books)
     else:
         return redirect(url_for("login"))
@@ -98,17 +98,39 @@ def book(isbn):
 
         if request.method == "POST":
 
-            review_content = request.form.get("review")
+            #GET USER ID
 
-            try:
+            username = session.get('user', None)
+            user_id = db.execute("SELECT id FROM users WHERE username = :username", {"username": username})
+            
+            for result_proxy in user_id:
+                user_id_dict = dict(result_proxy)
+            
+            user_id_int = user_id_dict["id"]
 
-                db.execute("INSERT INTO reviews (content) VALUES (:content)", {"content": review_content})
-                db.commit()
-                return render_template ("book.html", book_info = book_info, message = "Your review has been posted")
+            #GET BOOK ID
 
-            except:
+            book_id = db.execute("SELECT id FROM books WHERE isbn = :isbn", {"isbn": isbn})
+            
+            for result_proxy in book_id:
+                book_id_dict = dict(result_proxy)
+            
+            book_id_int = book_id_dict["id"]
 
-                return render_template ("book.html", book_info = book_info, message_error = "There was a problem in posting your review")
+            if db.execute("SELECT user_id FROM reviews WHERE book_id = :book_id", {"book_id": book_id_int}).rowcount == 0:
+
+                review_content = request.form.get("review")
+
+                try:
+                    db.execute("INSERT INTO reviews (content, user_id, book_id) VALUES (:content, :user_id, :book_id)",
+                    {"content": review_content, "user_id": user_id_int, "book_id": book_id_int})
+                    db.commit()
+                    return render_template ("book.html", book_info = book_info, message = "Your review has been posted")
+                        
+                except:
+                    return render_template ("book.html", book_info = book_info, message_error1 = "There was a problem in posting your review")
+
+            return render_template ("book.html", book_info = book_info, message_error2 = "You have already reviewed this book!")
 
         return render_template ("book.html", book_info = book_info)
     

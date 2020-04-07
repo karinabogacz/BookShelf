@@ -9,6 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <section>
+                    <!-- Book info -->
                     <header>
                         <h1 class="display-4 m-5 text-center">{{book_info.title}}</h1>
                         <hr style="width: 100%">
@@ -20,6 +21,7 @@
                     </ul>
                 </section>
                 <section>
+                    <!-- Submit review -->
                     <div class="form-group mt-4">
                         <form action="/book/{{book_info.isbn}}" method="post">
                             {% if message %}
@@ -30,6 +32,10 @@
                             <div class="alert alert-danger" role="alert">
                                 {{message_error}}
                               </div>
+                            {% elif message_error2 %}
+                            <div class="alert alert-danger" role="alert">
+                                {{message_error2}}
+                            </div>
                             {% else %}
                             <label for="exampleFormControlTextarea1" class="heading-review">Leave a review!</label>
                             <div class="rate">
@@ -51,6 +57,7 @@
                     </div>
                 </section>
                 <section>
+                    <!-- Reviews section -->
                     <h2 class="heading-review mt-5">Reviews</h2>
                     <ul class="list-group list-group-flush my-5">
                         <li class="list-group-item">review</li>
