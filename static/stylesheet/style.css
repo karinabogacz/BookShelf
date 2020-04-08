@@ -95,6 +95,15 @@ article{
 }
 
 @media(max-width: 767px){
+    .display-3-home{
+        font-size: 40px;
+        font-weight: 400;
+    }
+    .h3-home{
+        font-size: 22px;
+        letter-spacing: 1.5px;
+        margin-top: 30px !important;
+    }
     .sign_up-text{
         display: none;
     }
@@ -211,3 +220,7 @@ footer p{
     font-weight: 500; 
     margin-bottom: 25px;
 }
+
+.checked {
+    color: orange;
+  }

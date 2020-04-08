@@ -33,6 +33,8 @@ def sign_up():
         email = request.form.get("email")
         password = str(request.form.get("password"))
 
+        #Make sure fields are not empty and username is not taken
+
         if username == "" or email == "" or password == "":
             return render_template ("sign_up.html", message = "You need to fill in all fields")
         try:
@@ -42,6 +44,7 @@ def sign_up():
             return redirect(url_for('search'))
         except:
             return render_template("sign_up.html", message = "Username taken")
+
     return render_template("sign_up.html")
 
 @app.route("/login", methods=['GET','POST'])
@@ -51,6 +54,8 @@ def login():
 
         username = request.form.get("username")
         password = request.form.get("password")
+
+        #Check if username and password are in the database
 
         if db.execute("SELECT * FROM users WHERE username = :username AND password = :password", {"username": username, "password": password}).rowcount == 0:
             return render_template ("login.html", message = "Wrong username or password")
@@ -74,6 +79,8 @@ def search():
 
             search_results = db.execute("SELECT * FROM books WHERE isbn LIKE :query OR title = :search_input OR LOWER(title) LIKE :query_lower OR LOWER(author) LIKE :query_lower",
             {"query": query, "search_input": search_input, "query_lower": query_lower})
+
+            #Count the results
             
             row_count = search_results.rowcount
 
@@ -84,7 +91,7 @@ def search():
                 return render_template ("search_results.html", search_results = search_results, row_count = row_count)
 
         else:
-            books = db.execute ("SELECT * FROM books LIMIT 4").fetchall()
+            books = db.execute ("SELECT * FROM books WHERE year < 2000 LIMIT 50").fetchall()
             return render_template("search.html", user=session["user"], books = books)
     else:
         return redirect(url_for("login"))
@@ -96,43 +103,48 @@ def book(isbn):
 
         book_info = db.execute ("SELECT * FROM books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
 
+        #GET BOOK ID and convert it to INT type
+
+        book_id = db.execute("SELECT id FROM books WHERE isbn = :isbn", {"isbn": isbn})
+        
+        for result_proxy in book_id:
+            book_id_dict = dict(result_proxy)
+        book_id_int = book_id_dict["id"]
+
+        #Get reviews and rates
+
+        book_reviews = db.execute("SELECT * FROM reviews WHERE book_id = :book_id", {"book_id": book_id_int})
+
         if request.method == "POST":
 
-            #GET USER ID
+            #GET USER ID and convert it to INT type
 
             username = session.get('user', None)
             user_id = db.execute("SELECT id FROM users WHERE username = :username", {"username": username})
             
             for result_proxy in user_id:
                 user_id_dict = dict(result_proxy)
-            
             user_id_int = user_id_dict["id"]
 
-            #GET BOOK ID
+            #Check if the user has already reviewed the book
 
-            book_id = db.execute("SELECT id FROM books WHERE isbn = :isbn", {"isbn": isbn})
-            
-            for result_proxy in book_id:
-                book_id_dict = dict(result_proxy)
-            
-            book_id_int = book_id_dict["id"]
-
-            if db.execute("SELECT user_id FROM reviews WHERE book_id = :book_id", {"book_id": book_id_int}).rowcount == 0:
+            if db.execute("SELECT * FROM reviews WHERE user_id = :user_id AND book_id = :book_id", {"user_id": user_id_int, "book_id": book_id_int}).rowcount == 0:
 
                 review_content = request.form.get("review")
+                review_rate = int(request.form.get("rate"))
 
                 try:
-                    db.execute("INSERT INTO reviews (content, user_id, book_id) VALUES (:content, :user_id, :book_id)",
-                    {"content": review_content, "user_id": user_id_int, "book_id": book_id_int})
+                    db.execute("INSERT INTO reviews (user_id, book_id, content, rate) VALUES (:user_id, :book_id, :content, :rate)",
+                    {"user_id": user_id_int, "book_id": book_id_int, "content": review_content, "rate": review_rate})
                     db.commit()
-                    return render_template ("book.html", book_info = book_info, message = "Your review has been posted")
+                    return render_template ("book.html", book_info = book_info, book_reviews = book_reviews, message = "Your review has been posted")
                         
                 except:
-                    return render_template ("book.html", book_info = book_info, message_error1 = "There was a problem in posting your review")
+                    return render_template ("book.html", book_info = book_info, book_reviews = book_reviews, message_error1 = "There was a problem in posting your review")
 
-            return render_template ("book.html", book_info = book_info, message_error2 = "You have already reviewed this book!")
+            return render_template ("book.html", book_info = book_info, book_reviews = book_reviews, message_error2 = "You have already reviewed this book!")
 
-        return render_template ("book.html", book_info = book_info)
+        return render_template ("book.html", book_info = book_info, book_reviews = book_reviews)
     
     return redirect(url_for('login'))
 
