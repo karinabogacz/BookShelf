@@ -1,1 +1,1 @@
-CS50 W Project 1: a web application for a library that can allow users to registrate and search for books and its review (using goodreads API). Made using Flask-SQLAlchemy and postgreSQL
+CS50 W Project 1: a web application for a library that can allow users to register, search for books and their reviews (using goodreads API) and post their own reviews. Made using FLask, Flask-SQLAlchemy and postgreSQL. Font-end made with HTML5, CSS3 and bootstrap 4.
