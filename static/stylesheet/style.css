@@ -8,15 +8,15 @@
     background-position: bottom;
     background-size: cover;
     content: "";
-
 }
 
 .layout_enter{
     background-color: #f2f5f7;
 }
 
-article{
+.section-home{
     text-align: center;
+    min-height: 400px;
 }
 
 .display-3-home{
@@ -38,7 +38,7 @@ article{
     font-size: 25px;
     border: none;
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.8), 0 14px 28px 0 rgba(0, 0, 0, 0.30);
-    
+    margin-bottom: 50px;
 }
 
 .button-home:hover{
@@ -46,8 +46,7 @@ article{
     color: cornsilk;
 }
 
-
-.main-login{
+.section-login{
     background-color: #50927c;
     margin-top: 25px;
     padding-top: 40px;
@@ -66,14 +65,14 @@ article{
     color: #494a4a;
 }
   
-.btnSubmit
-{
-    width: 80%;
+.btnSubmit{
+    width: 75%;
     border-radius: 2rem;
     padding: 2.5%;
     border: none;
-    cursor: pointer;
-    font-weight: 500;
+    color: cornsilk;
+    font-size: 18px;
+    font-weight: 450;
     margin-top: 20px;
     margin-bottom: 10px;
     background-color: #50927c ;
@@ -120,6 +119,9 @@ article{
     hr{
         margin-top: 70px !important;
     }
+    .main-background{
+        width: 100% !important;
+    }
 }
 
 @media(max-width: 991px){
@@ -154,10 +156,16 @@ footer p{
     box-shadow: none;
 }
 
-.btn-search{
+.btn-search, .button-review{
     background-color: #50927c;
+    border: none;
     color: cornsilk;
     font-weight: 350;
+}
+
+.btn-search:hover, .btnSubmit:hover, .button-review:hover{
+    color: cornsilk;
+    background-color: #3d7e68;
 }
 
 .list-group-book-info li{
@@ -165,17 +173,9 @@ footer p{
     letter-spacing: 2px;
 }
 
-.button-review{
-    background-color: #50927c;
-    border: none;
-    border-radius: 1rem;
-    padding: 10px 20px 10px 20px;
-    font-weight: 320;
+.list-group-book-info .list-group-item:last-child{
+    border: none !important;
 }
-
-.button-home:hover, .button-review:hover{
-    background-color: #427e6a
-} 
 
 .rate {
     display: block;
@@ -219,8 +219,9 @@ footer p{
     font-size: 22px;
     font-weight: 500; 
     margin-bottom: 25px;
+    margin-top: 30px;
 }
 
 .checked {
-    color: orange;
+    color: #e9bd1f;
   }

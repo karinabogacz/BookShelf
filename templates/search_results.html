@@ -2,15 +2,14 @@
 
 {%block content%}
 
-<main>
-  <div class="container d-block" style="background-color: white; min-height: 800px;">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-6">
-
-        <form class="card card-sm form-search mt-4" action="{{url_for('search')}}" method="post">
+<main class="m-auto px-2 main-background" style="background-color: white; width: 85%; min-height: 800px">
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-6 d-block mx-auto">
+          <form class="card card-sm form-search mt-4" action="{{url_for('search')}}" method="post">
             <div class="card-body row no-gutters align-items-center">
               <div class="col-auto">
-
                 <i class="fas fa-search h5 text-body"></i>
               </div>
               <div class="col">
@@ -19,33 +18,37 @@
               <div class="col-auto">
                 <button class="btn btn-lg btn-search" type="submit">Search</button>
               </div>
-
             </div>
           </form>
-
-      </div>
-    
-      <div class="col-lg-10 mt-4">
-        <h5 class="my-4">Found {{row_count}} results:</h5>
-
-        {%if message%}
-        <h3>{{message}}</h3>
-        
-        {%else%}
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            {% for book in search_results %}
-            <li class="list-group-item">
-              <a href="/book/{{book.isbn}}"> {{book.title}}</a>
-              <p>{{book.author}}, {{book.year}}</p>
-              <p class="float-right">{{book.isbn}}</p>
-            </li>
-            {% endfor %}
-          </ul>
         </div>
-        {%endif%}
       </div>
-  </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mt-4 d-block mx-auto">
+          <h5 class="my-4">Found {{row_count}} results:</h5>
+          {%if message%}
+            <h3>{{message}}</h3>
+          {%else%}
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                {% for book in search_results %}
+                  <li class="list-group-item">
+                    <a href="/book/{{book.isbn}}"> {{book.title}}</a>
+                    <p>{{book.author}}, {{book.year}}</p>
+                    <p class="float-right">{{book.isbn}}</p>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {%endif%}
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 

@@ -4,37 +4,33 @@
 
 {% block content%} 
 
-<main class="main-login">
-
-<div class="container">
-  <div class="row">
-      <div class="col-lg-4 col-sm-6 d-block m-auto pb-4 text-center login-form">
-          <h3 class="h4 mb-4 h3-sign_up">Sign in</h3>
-          
-            {%if message%}
-                <p style="color: red;">{{message}}</p>
-            {%endif%}
-
-          <form action="{{url_for('login')}}" method="post">
-              <div class="form-group">
-                  <input type="text" class="form-control" name="username" placeholder="Your username">
-              </div>
-              <div class="form-group">
-                  <input type="password" class="form-control" name="password" placeholder="Your Password">
-              </div>
-              <div class="form-group">
-                  <input type="submit" class="btnSubmit" value="Login" />
-              </div>
-              <div class="form-group">
-                <p class="float-left mt-3 mr-2">First time?
-                    <a href="{{url_for('sign_up')}}">Sign up</a>
-                </p>
-              </div>
-            </form>
+<section class="section-login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 d-block m-auto pb-3 text-center login-form">
+                <h3 class="h4 mb-4 h3-sign_up">Sign in</h3>
+                    {%if message%}
+                        <p style="color: red;">{{message}}</p>
+                    {%endif%}
+                <form action="{{url_for('login')}}" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Your username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Your Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Login" />
+                    </div>
+                    <div class="form-group">
+                        <p class="float-left mt-3 mr-2">First time?
+                            <a href="{{url_for('sign_up')}}">Sign up</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
-</main>
+</section>
 
 {% endblock %} 
