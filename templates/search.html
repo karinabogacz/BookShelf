@@ -1,0 +1,61 @@
+{% extends 'layout_home.html' %}
+
+{%block content%}
+
+<main class="m-auto px-2 main-background" style="background-color: white; width: 85%;">
+ <header>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <h3 class="h4 m-3 p-3" style="font-weight: 250; background-color: #50927c; color: white;">You can search here a book by its title, author or isbn number</h3>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-6 d-block mx-auto">
+          <form class="card card-sm form-search mt-4" action="{{url_for('search')}}" method="post">
+            <div class="card-body row no-gutters align-items-center">
+              <div class="col-auto">
+                <i class="fas fa-search h5 text-body"></i>
+              </div>
+              <div class="col">
+                <input class="form-control form-control-lg form-control-borderless" name="search" placeholder="Search books or keywords">
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-lg btn-search" type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mt-5 d-block mx-auto">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              {% for book in books %}
+              <li class="list-group-item">
+                <a href="/book/{{book.isbn}}"> {{book.title}}</a>
+                <p>{{book.author}}, {{book.year}}</p>
+                <p class="float-right">{{book.isbn}}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</main>
+
+{%endblock%}
+

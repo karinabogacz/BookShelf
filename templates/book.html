@@ -1,0 +1,107 @@
+{% extends 'layout_home.html' %}
+
+{% block title%} BookShelf {% endblock %} 
+
+{% block content%}
+
+<main class="m-auto px-2 main-background" style="background-color: white; width: 85%; min-height: 800px">
+
+    <header>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h1 class="display-4 m-5 text-center">{{book_info.title}}</h1>
+                <hr style="width: 100%;">
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-10 d-block mx-auto">    
+                    <ul class="list-group list-group-flush mt-5 list-group-book-info">
+                        <li class="list-group-item">Author: {{book_info.author}}</li>
+                        <li class="list-group-item">Publishing year: {{book_info.year}}</li>
+                        <li class="list-group-item">ISBN number: {{book_info.isbn}}</li>
+                        <li class="list-group-item">Overall rating:
+                            <span>
+                                <p class="d-inline" style="color: #3d7e68;">{{average_rating}}</p> based on <p class="d-inline" style="color: #3d7e68;" >{{work_ratings_count}}</p> ratings
+                            </span>
+                            <div class="d-block">
+                                <p class="d-inline" style="font-size: 14px; letter-spacing: 1px; color: rgb(192, 189, 189)">Data from </p><a class="d-inline" href="https://www.goodreads.com/" target="_blank" style="text-decoration: underline; font-size: 13px; letter-spacing:1px"> goodreads</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr style="width: 100%; margin-top: 30px; margin-bottom: 15px">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-10 d-block mx-auto">
+                    <div class="form-group">
+                        <form action="/book/{{book_info.isbn}}" method="post">
+                            {% if message %}
+                            <div class="alert alert-success mt-5" role="alert">
+                                {{message}}
+                            </div>
+                            {% elif message_error %}
+                            <div class="alert alert-danger mt-5" role="alert">
+                                {{message_error}}
+                              </div>
+                            {% elif message_error2 %}
+                            <div class="alert alert-danger mt-5" role="alert">
+                                {{message_error2}}
+                            </div>
+                            {% else %}
+                            <label for="exampleFormControlTextarea1" class="heading-review">Leave a review!</label>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5"/>
+                                    <label for="star5" title="text"></label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text"></label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text"></label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text"></label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text"></label>
+                              </div>
+                            <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3" name = "review" ></textarea>
+                            <button type="submit" class="btn btn-primary btn-lg float-right mt-4 button-review">Submit</a></button>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 d-block mx-auto">
+                <h2 class="heading-review">Reviews:</h2>
+                <ul class="list-group list-group-flush mb-5">
+                    {% for review in book_reviews %}
+                        <li class="list-group-item">
+                        {% for rate in range (review.rate) %}
+                            <span class="fa fa-star checked"></span>
+                        {% endfor %}
+                        <p class="mt-3">{{review.content}}</p>
+                        </li>
+                    {%else%}
+                        <p class="mb-5">Be the first one to post a review!</p>
+                    {%endfor%}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'layout_enter.html' %}
+
+{% block title%} Sign up {% endblock %} 
+
+{% block content%} 
+
+<section class="section-login">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-6 login-form">
+          <h3 class="h3 mb-5">Join our community! </h3>
+          {%if message%}
+              <p style="color: red;">{{message}}</p>
+          {%endif%}
+          <form action="{{url_for('sign_up')}}" method="post">
+              <div class="form-group">
+                  <input type="text" class="form-control" name="username" placeholder="username">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="email" placeholder="email" >
+            </div>
+              <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="password">
+              </div>
+              <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="Sign up"/>
+              </div>
+              <div class="form-group">
+                <p class="float-left mt-3 mr-2">Already have an account?
+                <a href="{{url_for('login')}}">Login</a>
+              </p>
+            </div>
+          </form>
+        </div>
+  
+        <div class="col-lg-6 sign_up-text">
+          <h1 class="display-3 my-4 ml-4 h1-sign_up">Why join us?</h1>
+          <h2 class="display-5 ml-4 h2-sign_up">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, aut excepturi enim atque alias commodi culpa blanditiis cum vero.</h2>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %} 

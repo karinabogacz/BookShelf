@@ -1,0 +1,26 @@
+{% extends 'layout_home.html' %}
+
+{% block title%} BookShelf {% endblock %} 
+
+{% block content%}
+
+<section class="section-home">
+
+  <header>
+
+    <h1 class="display-3 display-3-home"> Lorem Ipsum Dolor </h1>
+    <h2 class="h3 m-5 h3-home">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores tenetur libero veritatis sunt et inventore, ab quibusdam ratione facere quaerat, blanditiis quidem odit perspiciatis nisi!</h2>
+
+  </header>
+
+    {% if session["user"]%}
+
+    {%else%}
+    <a href="{{url_for('sign_up')}}">
+      <button type="button" class="btn btn-dark btn-lg py-2 px-5 button-home">Join us!</button>
+    </a>
+    {%endif%}
+
+</section>
+
+{% endblock %}
