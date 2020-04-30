@@ -184,3 +184,7 @@ def book_api(isbn):
         "review_count": work_ratings_count,
         "average_score": average_rating
     })
+
+  
+if __name__ == "__main__":
+    main()

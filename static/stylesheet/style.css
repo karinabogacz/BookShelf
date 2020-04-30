@@ -1,0 +1,247 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.layout_home::before{
+    position: fixed;
+    background-image: url("bcg3.jpg");
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+    background-position: bottom;
+    background-size: cover;
+    content: "";
+}
+
+.layout_enter{
+    background-color: #f2f5f7;
+}
+
+.section-home{
+    text-align: center;
+    min-height: 400px;
+}
+
+.display-3-home{
+    color: cornsilk;
+    margin-top: 50px;
+}
+
+.h3-home{
+    margin-top: 50px;
+    margin-bottom: 60px;
+    color: cornsilk;
+    font-weight: 100;
+}
+
+.button-home{
+    background-color: cornsilk;
+    color: #50927c;
+    font-weight: 500;
+    font-size: 25px;
+    border: none;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.8), 0 14px 28px 0 rgba(0, 0, 0, 0.30);
+    margin-bottom: 50px;
+}
+
+.button-home:hover{
+    background-color: #50927c;
+    color: cornsilk;
+    font-weight: 450;
+}
+
+.nav-item-green:hover{
+    background-color: #3d7e68 !important;
+}
+
+.page-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.section-login{
+    background-color: #50927c;
+    margin-top: 25px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.login-form{
+    padding: 4% 3% 0 3%;
+    background-color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 18px;
+}
+.login-form h3{
+    text-align: center;
+    font-weight: 400;
+    color: #494a4a;
+}
+  
+.btnSubmit{
+    width: 75%;
+    border-radius: 2rem;
+    padding: 2.5%;
+    border: none;
+    color: cornsilk;
+    font-size: 18px;
+    font-weight: 450;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #50927c ;
+}
+
+.h3-logo{
+    color: #494a4a;
+    font-weight: 200;
+}
+
+.h1-sign_up{
+    color: #f2f5f7;
+}
+
+.h2-sign_up{
+    color: #f2f5f7;
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 767px){
+    .display-3-home{
+        font-size: 40px;
+        font-weight: 400;
+    }
+    .h3-home{
+        font-size: 22px;
+        letter-spacing: 1.5px;
+        margin-top: 30px !important;
+    }
+    .sign_up-text{
+        display: none;
+    }
+    .login-form{
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 80%;
+        padding: 4% 6% 2% 6%;
+    }
+    .login-form h3{
+       margin-top: 20px;
+       margin-bottom: 50px !important;
+    }
+    hr{
+        margin-top: 70px !important;
+    }
+    .main-background{
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 991px){
+    .h1-sign_up{
+        font-size: 50px !important;
+    }
+    .h2-sign_up{
+        font-size: 25px !important;
+    }
+}
+
+hr {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 20%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, cornsilk, #494a4a, cornsilk);
+}
+
+footer p{
+    color: #7c7c7d;
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-search, .button-review{
+    background-color: #50927c;
+    border: none;
+    color: cornsilk;
+    font-weight: 350;
+}
+
+.btn-search:hover, .btnSubmit:hover, .button-review:hover{
+    color: cornsilk;
+    background-color: #3d7e68;
+}
+
+.list-group-book-info li{
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.list-group-book-info .list-group-item:last-child{
+    border: none !important;
+}
+
+.rate {
+    display: block;
+    float: left;
+    height: 40px;
+    margin-bottom: 20px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    display: none;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.heading-review {
+    display: block;
+    font-size: 22px;
+    font-weight: 500; 
+    margin-bottom: 25px;
+    margin-top: 30px;
+}
+
+.checked {
+    color: #e9bd1f;
+  }
