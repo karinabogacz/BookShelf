@@ -1,6 +1,4 @@
-# Project 1
-
-Web Programming with Python and JavaScript
+# Project 1 for Web Programming with Python and JavaScript
 
 In templates directory there are all html files. login.html file extends layout_home.html. Threre are two forms in login page, one for registering a second for logging in. Both of them extend layout_enter.html. Succesfully registered user can try log in, in case of incorrect data message shows. Once logged in username displays next to log out button.
 
