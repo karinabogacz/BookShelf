@@ -1,4 +1,4 @@
-# Project Title: Web Programming with Python and JavaScript
+# Web Programming with Python and JavaScript
 
 ## Description:
 Project 1 is a web application developed for the Web Programming course, integrating Python and JavaScript technologies. The project focuses on creating a dynamic platform for book management and user interaction.
