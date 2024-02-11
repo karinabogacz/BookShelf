@@ -1,12 +1,38 @@
-# Project 1 for Web Programming with Python and JavaScript
+# Project Title: Web Programming with Python and JavaScript
 
-In templates directory there are all html files. login.html file extends layout_home.html. Threre are two forms in login page, one for registering a second for logging in. Both of them extend layout_enter.html. Succesfully registered user can try log in, in case of incorrect data message shows. Once logged in username displays next to log out button.
+## Description:
+Project 1 is a web application developed for the Web Programming course, integrating Python and JavaScript technologies. The project focuses on creating a dynamic platform for book management and user interaction.
 
-User is redirected to index.html after logged in. If index is requested by GET, some chosen books will be displayed and users will be able search more books in database. If index is requested by POST (searching for books) list of books shows. Clicking one of the positions takes redirects to book.html (bookpage), which extends layout_home.html
+## Features:
+- **Login and Registration:** Utilizing HTML forms, users can register or log in to access the system. Incorrect login attempts are handled gracefully with error messages.
+- **User Dashboard:** Upon successful login, users are directed to their dashboard (index.html), where they can view selected books and search for additional titles.
+- **Book Details:** Clicking on a book redirects users to a detailed book page (book.html), displaying information such as author, year, ISBN, along with ratings and reviews fetched from the Goodreads API.
+- **Review System:** Users can leave reviews and ratings (up to 5 stars) for books. Each user can only submit one review per book.
+- **Session Management:** Users can log out at any time, clearing their session and returning to the login page.
 
-On bookpage author, year and isbn are loaded as well as rating count and average rate from goodread.com API. Also all reviews received from users along with ratings are loaded. There is also a plece where user can leave their review and rating of max 5 stars. User can only leave 1 review for each book.
+## Technologies Used:
+- **Flask:** Used as the web framework to handle routing and requests.
+- **Flask-Session:** For managing user sessions securely.
+- **psycopg2-binary:** PostgreSQL adapter for Python, facilitating interaction with the database.
+- **SQLAlchemy:** Used for database management and ORM functionalities.
 
-Clicking Log out button session is cleared and users is logging out, login.html page is loaded after.
+## Files Structure:
+- **application.py:** Main application file containing routing, database queries, and other functions.
+- **import.py:** Script to import book data from books.csv into the database and create necessary tables.
+- **requirements.txt:** List of dependencies required for the project.
+- **templates:** Directory containing HTML templates for different pages.
+- **static/stylesheet:** Directory containing CSS files for styling.
+- **books.csv:** CSV file containing book data to be imported into the database.
 
-application.py is a main app file. Contains routing to all html files , queries to database and all other functions.
-import.py take books from books.csv file and import them into database, as well as creates all needed tables.
+## Requirements:
+- Python
+- Flask
+- Flask-Session
+- psycopg2-binary
+- SQLAlchemy
+
+## How to Run:
+1. Ensure Python and required dependencies are installed.
+2. Run `python import.py` to import book data and set up the database.
+3. Run `python application.py` to start the Flask server.
+4. Access the application via the provided URL.
